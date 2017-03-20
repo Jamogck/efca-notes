@@ -12,13 +12,15 @@
 ?>
 
 	</div><!-- #content -->
-</div> <!-- flex -->
+</div><!-- .site -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
+		
+		<?php admin_url('post-new.php'); ?>
 		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'efca-notes' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'efca-notes' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'efca-notes' ), 'efca-notes', '<a href="https://automattic.com/" rel="designer">EFCA Communications</a>' ); ?>
+			<p>
+				This resource lovingly made available by the EFCA Communications team. Send us your questions and feedback.
+			</p>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

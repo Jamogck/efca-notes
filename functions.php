@@ -107,20 +107,10 @@ add_action( 'widgets_init', 'efca_notes_widgets_init' );
 function efca_notes_scripts() {
 	wp_enqueue_style( 'efca-notes-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'efca-notes-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_script('efca-app-js', get_template_directory_uri() . '/js/min/app-min.js', array('jquery'), true);
 
-	wp_enqueue_script( 'efca-notes-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
 }
 add_action( 'wp_enqueue_scripts', 'efca_notes_scripts' );
-
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
@@ -141,3 +131,52 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/**
+ * Change Posts type to Notes
+ */
+
+function revcon_change_post_label() {
+    global $menu;
+    global $submenu;
+    $menu[5][0] = 'Notes';
+    $submenu['edit.php'][5][0] = 'Notes';
+    $submenu['edit.php'][10][0] = 'Add Note';
+    $submenu['edit.php'][16][0] = 'Notes Tags';
+}
+function revcon_change_post_object() {
+    global $wp_post_types;
+    $labels = &$wp_post_types['post']->labels;
+    $labels->name = 'Notes';
+    $labels->singular_name = 'Notes';
+    $labels->add_new = 'Add Note';
+    $labels->add_new_item = 'Add Note';
+    $labels->edit_item = 'Edit Note';
+    $labels->new_item = 'Note';
+    $labels->view_item = 'View Note';
+    $labels->search_items = 'Search Notes';
+    $labels->not_found = 'No Notes found';
+    $labels->not_found_in_trash = 'No Notes found in Trash';
+    $labels->all_items = 'All Notes';
+    $labels->menu_name = 'Notes';
+    $labels->name_admin_bar = 'Notes';
+}
+
+/**
+ * Change archive title on category pages
+ */
+ 
+add_action( 'admin_menu', 'revcon_change_post_label' );
+add_action( 'init', 'revcon_change_post_object' );
+
+add_filter( 'get_the_archive_title', function ( $title ) {
+
+    if( is_category() ) {
+
+        $title = single_cat_title( '', false );
+
+    }
+
+    return $title;
+
+});

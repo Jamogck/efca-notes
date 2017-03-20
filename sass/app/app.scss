@@ -1,3 +1,20 @@
+body {
+	font-family: "jaf-domus",sans-serif;
+	font-weight: 400;
+	background-image: url('img/noise.png');
+}
+
+.btn {
+	display: block;
+	width: 150px;
+	padding: 4px 8px;
+	text-align: center;
+
+	text-decoration: none;
+    color: #005689;
+    border: 1px solid #005689;
+}
+
 .flex {
   display: -webkit-box;
   display: -moz-box;
@@ -6,10 +23,17 @@
   display: flex; 
 }
 
-.site {
-	max-width: 1200px;
-	margin: auto;
+@media screen and (min-width: 60em) {
+	.site {
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+	}
 }
 
 @import "header";
 @import "content";
+@import "participants";
+@import "footer";

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
 Theme Name: EFCA Notes
 Theme URI: http://underscores.me/
@@ -36,7 +37,6 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Content
 	## Posts and pages
 	## Comments
-# Infinite scroll
 # Media
 	## Captions
 	## Galleries
@@ -236,41 +236,27 @@ h1, h2, h3, h4, h5, h6 {
 p {
   margin-bottom: 1.5em; }
 
-dfn, cite, em, i {
-  font-style: italic; }
-
 blockquote {
-  margin: 0 1.5em; }
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "“" "”";
+  font-size: 1.2em;
+  -webkit-margin-start: 0px; }
 
-address {
-  margin: 0 0 1.5em; }
+blockquote:before {
+  color: #ccc;
+  content: '';
+  line-height: 0.1em;
+  vertical-align: -0.4em; }
 
-pre {
-  background: #eee;
-  font-family: "Courier 10 Pitch", Courier, monospace;
-  font-size: 15px;
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  margin-bottom: 1.6em;
-  max-width: 100%;
-  overflow: auto;
-  padding: 1.6em; }
-
-code, kbd, tt, var {
-  font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
-  font-size: 15px;
-  font-size: 0.9375rem; }
+blockquote p {
+  display: inline; }
 
 abbr, acronym {
   border-bottom: 1px dotted #666;
   cursor: help; }
-
-mark, ins {
-  background: #fff9c0;
-  text-decoration: none; }
-
-big {
-  font-size: 125%; }
 
 /*--------------------------------------------------------------
 # Elements
@@ -288,30 +274,17 @@ body {
   background: #fff;
   /* Fallback for when there is no custom background color defined. */ }
 
-blockquote, q {
-  quotes: "" ""; }
-  blockquote:before, blockquote:after, q:before, q:after {
-    content: ""; }
-
 hr {
   background-color: #ccc;
   border: 0;
   height: 1px;
   margin-bottom: 1.5em; }
 
-ul, ol {
-  margin: 0 0 1.5em 3em; }
-
 ul {
   list-style: disc; }
 
 ol {
   list-style: decimal; }
-
-li > ul,
-li > ol {
-  margin-bottom: 0;
-  margin-left: 1.5em; }
 
 dt {
   font-weight: bold; }
@@ -411,23 +384,16 @@ textarea {
 # Navigation
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
-## Links
---------------------------------------------------------------*/
-a {
-  color: royalblue; }
-  a:visited {
-    color: purple; }
-  a:hover, a:focus, a:active {
-    color: midnightblue; }
-  a:focus {
-    outline: thin dotted; }
-  a:hover, a:active {
-    outline: 0; }
-
-/*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
+.main-navigation {
+  display: inline-block;
+  width: 80%;
+  padding: 1em 0; }
+
 .menu {
+  display: inline-block;
+  width: 100%;
   -webkit-margin-before: 0;
   -webkit-margin-after: 0;
   -webkit-margin-start: 0;
@@ -435,14 +401,39 @@ a {
   -webkit-padding-start: 0; }
   .menu li {
     list-style: none; }
+    .menu li:not(:last-of-type) {
+      border-bottom: 1px solid #df4242; }
     .menu li a {
       display: block;
-      padding: 1em;
-      text-decoration: none; }
-      .menu li a:hover, .menu li a:focus {
-        background-color: #f8f8f8;
-        box-shadow: 0px 0px 15px #dfdfdf; }
+      padding: .3em 1em;
+      text-decoration: none;
+      color: #FFF; }
 
+a.unread:before {
+  content: '';
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+  background-color: yellow;
+  border-radius: 50%;
+  margin-right: 5px; }
+
+.current-menu-item {
+  background-color: #df4242; }
+
+@media all and (min-width: 60em) {
+  .main-navigation {
+    width: 100%; }
+
+  .menu {
+    display: block; }
+    .menu li {
+      list-style: none;
+      text-align: right; }
+      .menu li a {
+        padding: 1em; }
+        .menu li a:hover, .menu li a:focus {
+          background-color: #df4242; } }
 /*--------------------------------------------------------------
 # Accessibility
 --------------------------------------------------------------*/
@@ -573,6 +564,20 @@ a {
 /*--------------------------------------------------------------
 # Notes Styles -- added by Jordan Mogck
 --------------------------------------------------------------*/
+body {
+  font-family: "jaf-domus",sans-serif;
+  font-weight: 400;
+  background-image: url("img/noise.png"); }
+
+.btn {
+  display: block;
+  width: 150px;
+  padding: 4px 8px;
+  text-align: center;
+  text-decoration: none;
+  color: #005689;
+  border: 1px solid #005689; }
+
 .flex {
   display: -webkit-box;
   display: -moz-box;
@@ -580,24 +585,198 @@ a {
   display: -webkit-flex;
   display: flex; }
 
-.site {
-  max-width: 1200px;
-  margin: auto; }
-
+@media screen and (min-width: 60em) {
+  .site {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex; } }
 .site-header {
-  width: 30%;
-  max-width: 265px;
-  height: 100%;
-  height: 100vh;
-  background-color: #eee; }
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  background-color: #ff5454;
+  background-image: url("img/noise.png"); }
 
 .site-branding {
-  width: 90px;
-  margin: 1em; }
+  width: 60px;
+  margin: auto; }
   .site-branding img {
     width: 100%; }
+  .site-branding svg {
+    fill: #FFF; }
 
+@media screen and (min-width: 60em) {
+  .site-header {
+    position: fixed;
+    display: block;
+    width: 30%;
+    max-width: 265px;
+    height: 100%;
+    height: 100vh; }
+
+  .site-header .btn {
+    position: absolute;
+    bottom: 100px;
+    left: 50px;
+    color: #FFF;
+    border: 1px solid #FFF; }
+
+  a.btn.btn-edit {
+    bottom: 150px; }
+
+  .site-branding {
+    float: right;
+    margin: 1em 1em; } }
 .site-content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 1em; }
+  width: 100%;
+  padding: 0 1em;
+  margin: 2em auto 0; }
+
+.archive-list {
+  margin: 0;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 0px; }
+  .archive-list li {
+    list-style: none;
+    padding: 0;
+    margin: 1em 0; }
+  .archive-list a.unread-post:after {
+    display: inline;
+    content: 'New';
+    margin-left: 5px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: "jaf-domus",sans-serif;
+    font-weight: 400;
+    background-color: yellow;
+    width: 60px;
+    text-shadow: none;
+    color: #fa5555;
+    text-align: center;
+    vertical-align: top; }
+
+.entry-content {
+  margin-top: 0;
+  font-weight: 100;
+  font-size: 21px; }
+
+.entry-header {
+  position: relative; }
+
+.post .entry-header:after {
+  content: '';
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  background-color: yellow;
+  border-radius: 50%;
+  z-index: -1; }
+
+.entry-meta {
+  margin-top: 2em; }
+
+.entry-title {
+  margin: 0;
+  font-family: "ratiomodern",serif;
+  font-size: 2.5em; }
+
+.entry-title a {
+  color: #542684;
+  text-decoration: none;
+  text-shadow: 1px 1px 0 #fff, -1px 1px 0 #fff, 2px 0 0 #fff, -2px 0 0 #fff;
+  box-shadow: inset 0 -1px 0 0 #fff, inset 0 -4px 0 0 #bdb;
+  transition: box-shadow 0.2s ease; }
+
+.entry-title a:hover, .entry-title a:focus {
+  box-shadow: inset 0 -1px 0 0 #fff, inset 0 -10px 0 0 #bdb; }
+
+.note-label {
+  margin-bottom: 0;
+  font-size: .8em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #999; }
+
+.note-label + p {
+  margin-top: 0; }
+
+@media screen and (min-width: 37.5em) {
+  .site-content {
+    width: 90%;
+    max-width: 800px; } }
+@media screen and (min-width: 60em) {
+  .site-content {
+    width: 70%;
+    max-width: 960px;
+    margin: 1em auto 0;
+    padding-left: 15%; } }
+@media screen and (min-width: 95em) {
+  .site-content {
+    width: 70%;
+    max-width: none; }
+
+  .note-meat {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex; }
+
+  .entry-meta {
+    width: 20%;
+    margin-left: 2em;
+    margin-top: 0;
+    order: 2; }
+
+  .entry-content {
+    width: 80%;
+    max-width: 960px;
+    order: 1; } }
+.participants_single {
+  position: relative;
+  margin: 0 4px;
+  cursor: pointer;
+  text-align: center; }
+  .participants_single img {
+    border-radius: 50%; }
+
+.participant_name {
+  display: none;
+  position: absolute;
+  left: -26px;
+  width: 200%;
+  padding: 0 4px;
+  background-color: #215a81;
+  color: #FFF;
+  font-size: .8em;
+  z-index: 10; }
+
+@media screen and (min-width: 95em) {
+  .participants .flex {
+    flex-wrap: wrap; }
+
+  .participants_single {
+    width: 24%; } }
+.site-footer {
+  margin-top: 6em;
+  padding: 0 1em;
+  background-color: #ff5454; }
+  .site-footer p {
+    font-size: .8em; }
+
+@media screen and (min-width: 60em) {
+  .site-footer {
+    width: 30%;
+    max-width: 265px;
+    margin-top: 0; } }

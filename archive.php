@@ -21,19 +21,25 @@ get_header(); ?>
 					the_archive_description( '<div class="archive-description">', '</div>' );
 				?>
 			</header><!-- .page-header -->
-
+			<ul class="archive-list">
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
+				$post = get_post();
+				
+				$date = get_field('date', $post->ID);
+
+				echo '<li><h2 class="entry-title"><a ';
+
+						if ( mnp_is_new_post($post) ) {
+							echo 'class="unread-post" ';
+						}
+
+				echo 'href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $date . '</a></h2></li>';
 
 			endwhile;
+			echo '</ul>';
 
 			the_posts_navigation();
 
@@ -47,5 +53,4 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 <?php
-get_sidebar();
 get_footer();
