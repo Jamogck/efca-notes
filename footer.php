@@ -19,7 +19,7 @@
 		<?php admin_url('post-new.php'); ?>
 		<div class="site-info">
 			<p>
-				This resource lovingly made available by the EFCA Communications team. Send us your questions and feedback.
+				This resource was joyfully contributed by your EFCA Communications team. <a href="mailto:communications@efca.org">Send us your questions and feedback</a>.
 			</p>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->

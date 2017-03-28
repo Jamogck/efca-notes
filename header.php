@@ -129,6 +129,9 @@
 			    // your code for logged out user 
 			  }
 			 ?>
+			 <aside>
+			 	<p>This resource was joyfully contributed by your EFCA Communications team. <a href="mailto:communications@efca.org">Send us your questions and feedback</a>.
+			 </aside>
 		</header><!-- #masthead -->
 
 		<div id="content" class="site-content">

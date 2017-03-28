@@ -11,6 +11,9 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
+			<script>
+				document.getElementById('main').className += ' fade-out';
+			</script>
 
 		<?php
 		if ( have_posts() ) : ?>
